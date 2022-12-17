@@ -38,8 +38,3 @@ services:
     ports:
       - '${NS_PORT}:1337'
     restart: always
-
-networks:
-  default:
-    external:
-      name: [YOUR DOCKER NETWORK NAME]
