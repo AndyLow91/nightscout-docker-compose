@@ -1,0 +1,45 @@
+version: "3"
+
+services:
+  database:
+    image: 'mongo'
+    environment:
+      - 'MONGO_INITDB_ROOT_USERNAME=admin'
+      - 'MONGO_INITDB_ROOT_PASSWORD=${MONGO_PW}'
+    volumes:
+      - './mongo:/data/db'
+    restart: always
+
+  nightscout:
+    build:
+      context: https://github.com/nightscout/cgm-remote-monitor.git
+      dockerfile: Dockerfile
+
+    environment:
+      - 'API_SECRET=${API_SECRET}'
+      - 'MONGODB_URI=mongodb://admin:${MONGO_PW}@${DIRECTORY}_database_1/admin'
+      - 'PORT=1337'
+      - 'BG_HIGH=180'
+      - 'BG_LOW=70'
+      - 'BG_TARGET_BOTTOM=70'
+      - 'BG_TARGET_TOP=180'
+      - 'CUSTOM_TITLE=${APP_NAME}'
+      - 'DEVICESTATUS_ADVANCED=true'
+      - 'DISPLAY_UNITS=mmol/L'
+      - 'ENABLE=food loop pump careportal basal bwp iob cob sage delta directio>
+      - 'TIME_FORMAT=24'
+      - 'THEME=colors'
+      - 'BASAL_RENDER=default'
+      - 'AUTH_DEFAULT_ROLES=denied'
+      
+    depends_on:
+      - database
+      
+    ports:
+      - '${NS_PORT}:1337'
+    restart: always
+
+networks:
+  default:
+    external:
+      name: [YOUR DOCKER NETWORK NAME]
