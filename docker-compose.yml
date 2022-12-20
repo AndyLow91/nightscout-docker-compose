@@ -26,7 +26,7 @@ services:
       - 'CUSTOM_TITLE=${APP_NAME}'
       - 'DEVICESTATUS_ADVANCED=true'
       - 'DISPLAY_UNITS=mmol/L'
-      - 'ENABLE=food loop pump careportal basal bwp iob cob sage delta directio>
+      - 'ENABLE=food loop pump careportal basal bwp iob cob sage delta direction upbat timeago profile rawbg basal alexa maker cage iage bgi openaps bridge'
       - 'TIME_FORMAT=24'
       - 'THEME=colors'
       - 'BASAL_RENDER=default'
