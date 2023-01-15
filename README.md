@@ -16,17 +16,26 @@ nano .env
 I've added some variables to this file but you can edit it as you like.
 
 ```
+# You can give your app a custom name
 APP_NAME=Nightscout
-MONGO_PW=[create a pw for mongodb - do not make this the same as your API_SECRET]
-API_SECRET=[YOUR_API_SECRET]
-NS_PORT=[The Port on the host machine where nightscout will be available]
-DIRECTORY=[The directory of the nightscout instalation]
+
+# Create a pw for mongodb - do not make this the same as your API_SECRET
+MONGO_PW=
+
+# Create your API Secret
+API_SECRET=
+
+# The Port on the host machine where nightscout will be available
+NS_PORT=
+
+# The directory of the nightscout instalation
+DIRECTORY=
 ```
 
 Then you can simply run the docker container
 
 ```
-docker-compose up -d
+docker compose up -d
 ```
 
 The nightscout site will now be available at your.ip.address:[NS_PORT]
